@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'intro.dart';
-import 'tasks.dart';
-import 'complete.dart';
+import 'tasks_list.dart';
+import 'complete_list.dart';
 import 'addtask.dart';
 import 'update_task.dart';
 
