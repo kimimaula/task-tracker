@@ -29,7 +29,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
   int _selectedIndex = 0;
 
   static const TextStyle optionStyle =
@@ -48,13 +47,6 @@ class _MyHomePageState extends State<MyHomePage> {
       style: optionStyle,
     ),
   ];
-
-  // state
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
 
   void _onItemTapped(int index) {
     setState(() {
@@ -87,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: Colors.cyan,
         onTap: _onItemTapped,
       ),
     );
