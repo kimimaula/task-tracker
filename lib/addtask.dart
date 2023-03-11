@@ -69,8 +69,14 @@ class _AddTaskState extends State<AddTask> {
               height: 50.0,
               child: ElevatedButton(
                 onPressed: () {
-                  if (_nameController.text.isNotEmpty &&
-                      _descriptionController.text.isNotEmpty) {
+                  if (_nameController.text.isEmpty ||
+                      _descriptionController.text.isEmpty) {
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      content: Text(
+                          'Please enter a name and description for the task.'),
+                      duration: Duration(seconds: 2),
+                    ));
+                  } else {
                     taskList.addTask({
                       "taskName": _nameController.text,
                       "taskDescription": _descriptionController.text,

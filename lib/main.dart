@@ -8,8 +8,25 @@ import 'update_task.dart';
 import 'completed_task.dart';
 
 class TaskList with ChangeNotifier {
-  final List<Map<String, dynamic>> _tasks = [];
-  final List<Map<String, dynamic>> _completedTasks = [];
+  final List<Map<String, dynamic>> _tasks = [
+    {'taskId': '1', 'taskName': 'Task 1', 'taskDescription': 'Description 1'},
+    {'taskId': '2', 'taskName': 'Task 2', 'taskDescription': 'Description 2'},
+    {'taskId': '3', 'taskName': 'Task 3', 'taskDescription': 'Description 3'},
+  ];
+  final List<Map<String, dynamic>> _completedTasks = [
+    {
+      'taskId': '4',
+      'taskName': 'Task 4',
+      'taskDescription': 'Description 4',
+      'completedDate': DateTime.now().toString()
+    },
+    {
+      'taskId': '5',
+      'taskName': 'Task 5',
+      'taskDescription': 'Description 5',
+      'completedDate': DateTime.now().toString()
+    },
+  ];
 
   List<Map<String, dynamic>> get tasks => _tasks;
   List<Map<String, dynamic>> get completedTasks => _completedTasks;
@@ -65,6 +82,13 @@ class MyApp extends StatelessWidget {
       title: 'Kimmi Shopper',
       theme: ThemeData(
         primarySwatch: Colors.cyan,
+        snackBarTheme: const SnackBarThemeData(
+          backgroundColor: Colors.red,
+          contentTextStyle: TextStyle(
+            color: Colors.white,
+            fontSize: 16.0,
+          ),
+        ),
       ),
       home: Navigator(
         onGenerateRoute: (RouteSettings settings) {
