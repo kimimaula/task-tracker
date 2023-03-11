@@ -123,7 +123,7 @@ class _MyHomePageState extends State<MyHomePage> {
       style: optionStyle,
     ),
     Text(
-      'Completed Tasks',
+      'Completed',
       style: optionStyle,
     ),
   ];
@@ -172,7 +172,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.school),
-            label: 'Completed Tasks',
+            label: 'Completed',
           ),
         ],
         currentIndex: _selectedIndex,

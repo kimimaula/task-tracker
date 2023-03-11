@@ -47,13 +47,6 @@ class _CompletePgState extends State<CompletePg> {
                 );
               },
             ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pushNamed(context, '/addtask');
-        },
-        backgroundColor: Colors.cyan,
-        child: const Icon(Icons.add),
-      ),
     );
   }
 }
