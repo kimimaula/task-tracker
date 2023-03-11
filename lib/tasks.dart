@@ -81,7 +81,32 @@ class _TasksState extends State<Tasks> {
                             ),
                           ),
                           onPressed: () {
-                            // Do something when the button is pressed
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: const Text('Confirm Complete'),
+                                  content: const Text(
+                                      'Are you sure you want to complete this task?'),
+                                  actions: <Widget>[
+                                    TextButton(
+                                      child: const Text('CANCEL'),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                    ),
+                                    TextButton(
+                                      child: const Text('COMPLETE'),
+                                      onPressed: () {
+                                        taskList.completeTask(
+                                            task['taskId'], DateTime.now());
+                                        Navigator.of(context).pop();
+                                      },
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
                           },
                         ),
                       ],
