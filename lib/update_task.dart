@@ -37,9 +37,12 @@ class _UpdateTaskState extends State<UpdateTask> {
     _descriptionController =
         TextEditingController(text: task['taskDescription']);
 
+    const TextStyle optionStyle = TextStyle(
+        fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white);
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Update Tasks'),
+        title: const Text('Update Tasks', style: optionStyle),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 35.0, vertical: 60.0),
@@ -80,7 +83,8 @@ class _UpdateTaskState extends State<UpdateTask> {
                   });
                   Navigator.pop(context);
                 },
-                child: const Text('Update Task'),
+                child: const Text('Update Task',
+                    style: TextStyle(color: Colors.white)),
               ),
             ),
           ],

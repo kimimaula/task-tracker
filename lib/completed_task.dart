@@ -36,16 +36,22 @@ class _CompletedTaskState extends State<CompletedTask> {
     final task =
         ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
 
+    const TextStyle optionStyle = TextStyle(
+        fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white);
+
     _nameController = TextEditingController(text: task['taskName']);
     _descriptionController =
         TextEditingController(text: task['taskDescription']);
     _completedTimeController = TextEditingController(
-        text: DateFormat('M-d-yyyy')
+        text: DateFormat('M-d-yyyy, H:m')
             .format(DateTime.parse(task['completedDate'])));
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Comleted Task'),
+        title: const Text(
+          'Comleted Task',
+          style: optionStyle,
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 35.0, vertical: 60.0),

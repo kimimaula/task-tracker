@@ -111,7 +111,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
 
   static const TextStyle optionStyle =
-      TextStyle(fontSize: 14, fontWeight: FontWeight.bold);
+      TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white);
 
   static const List<Widget> _widgetOptions = <Widget>[
     Text(
@@ -161,6 +161,9 @@ class _MyHomePageState extends State<MyHomePage> {
         child: _buildBody(),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.cyan,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white54,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -176,7 +179,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.cyan,
         onTap: _onItemTapped,
       ),
     );
