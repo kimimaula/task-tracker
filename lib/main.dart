@@ -1,11 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'intro.dart';
 import 'tasks.dart';
 import 'complete.dart';
 import 'addtask.dart';
 
+class TaskList with ChangeNotifier {
+  final List<Map<String, dynamic>> _tasks = [];
+  final List<Map<String, dynamic>> _completedTasks = [];
+
+  List<Map<String, dynamic>> get tasks => _tasks;
+  List<Map<String, dynamic>> get completedTasks => _completedTasks;
+
+  void addTask(Map<String, dynamic> task, [String? text]) {
+    _tasks.add(task);
+    notifyListeners();
+  }
+
+  void completeTask(String taskId, DateTime completedDate) {
+    Map<String, dynamic> task =
+        _tasks.firstWhere((task) => task['taskId'] == taskId);
+    task['completedDate'] = completedDate.toString();
+    _completedTasks.add(task);
+    _tasks.remove(task);
+    notifyListeners();
+  }
+}
+
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => TaskList()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

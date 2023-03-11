@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'main.dart';
+import 'package:uuid/uuid.dart';
 
 class AddTask extends StatefulWidget {
   const AddTask({required Key key}) : super(key: key);
@@ -27,6 +30,8 @@ class _AddTaskState extends State<AddTask> {
 
   @override
   Widget build(BuildContext context) {
+    TaskList taskList = Provider.of<TaskList>(context);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Add Tasks'),
@@ -63,7 +68,17 @@ class _AddTaskState extends State<AddTask> {
               width: double.infinity,
               height: 50.0,
               child: ElevatedButton(
-                onPressed: () => {print('test')},
+                onPressed: () {
+                  if (_nameController.text.isNotEmpty &&
+                      _descriptionController.text.isNotEmpty) {
+                    taskList.addTask({
+                      "taskName": _nameController.text,
+                      "taskDescription": _descriptionController.text,
+                      "taskId": const Uuid().v4(),
+                    });
+                    Navigator.pop(context);
+                  }
+                },
                 child: const Text('Add Task'),
               ),
             ),
