@@ -8,7 +8,22 @@ class AddTask extends StatefulWidget {
 }
 
 class _AddTaskState extends State<AddTask> {
-  late TextEditingController _controller;
+  late TextEditingController _nameController;
+  late TextEditingController _descriptionController;
+
+  @override
+  void initState() {
+    super.initState();
+    _nameController = TextEditingController();
+    _descriptionController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _descriptionController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,20 +31,45 @@ class _AddTaskState extends State<AddTask> {
       appBar: AppBar(
         title: const Text('Add Tasks'),
       ),
-      body: Center(
-          child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 35.0, vertical: 60.0),
         child: Column(
           children: <Widget>[
-            const Text('Add Task Page'),
-            const Spacer(),
-            ElevatedButton(
-              onPressed: () => {print('test')},
-              child: const Text('Add Task'),
+            Column(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 12.0),
+                  child: TextField(
+                    controller: _nameController,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Task Name',
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 12.0),
+                  child: TextField(
+                      controller: _descriptionController,
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Task Description',
+                      ),
+                      maxLines: 10),
+                )
+              ],
+            ),
+            SizedBox(
+              width: double.infinity,
+              height: 50.0,
+              child: ElevatedButton(
+                onPressed: () => {print('test')},
+                child: const Text('Add Task'),
+              ),
             ),
           ],
         ),
-      )),
+      ),
     );
   }
 }
