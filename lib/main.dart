@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'intro.dart';
+import 'tasks.dart';
+import 'complete.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,18 +35,19 @@ class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
 
   static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+      TextStyle(fontSize: 14, fontWeight: FontWeight.bold);
+
   static const List<Widget> _widgetOptions = <Widget>[
     Text(
-      'Index 0: Home',
+      'Introduction',
       style: optionStyle,
     ),
     Text(
-      'Index 1: Business',
+      'Tasks List',
       style: optionStyle,
     ),
     Text(
-      'Index 2: School',
+      'Completed Tasks',
       style: optionStyle,
     ),
   ];
@@ -54,14 +58,31 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  Widget _buildBody() {
+    switch (_selectedIndex) {
+      case 0:
+        return IntroPage(key: UniqueKey());
+      case 1:
+        return Tasks(
+          key: UniqueKey(),
+        );
+      case 2:
+        return CompletePg(
+          key: UniqueKey(),
+        );
+      default:
+        return Container();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: _widgetOptions.elementAt(_selectedIndex),
       ),
       body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
+        child: _buildBody(),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
@@ -71,11 +92,11 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.business),
-            label: 'Business',
+            label: 'Tasks List',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.school),
-            label: 'School',
+            label: 'Completed Tasks',
           ),
         ],
         currentIndex: _selectedIndex,
