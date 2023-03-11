@@ -4,6 +4,7 @@ import 'intro.dart';
 import 'tasks.dart';
 import 'complete.dart';
 import 'addtask.dart';
+import 'update_task.dart';
 
 class TaskList with ChangeNotifier {
   final List<Map<String, dynamic>> _tasks = [];
@@ -14,6 +15,14 @@ class TaskList with ChangeNotifier {
 
   void addTask(Map<String, dynamic> task, [String? text]) {
     _tasks.add(task);
+    notifyListeners();
+  }
+
+  void updateTask(String taskId, Map<String, dynamic> updatedTask) {
+    Map<String, dynamic> task =
+        _tasks.firstWhere((task) => task['taskId'] == taskId);
+    task['taskName'] = updatedTask['taskName'];
+    task['taskDescription'] = updatedTask['taskDescription'];
     notifyListeners();
   }
 
@@ -59,6 +68,11 @@ class MyApp extends StatelessWidget {
               break;
             case '/addtask':
               builder = (BuildContext _) => AddTask(
+                    key: UniqueKey(),
+                  );
+              break;
+            case '/updateTask':
+              builder = (BuildContext _) => UpdateTask(
                     key: UniqueKey(),
                   );
               break;

@@ -57,6 +57,13 @@ class _TasksState extends State<Tasks> {
                   ),
                 ],
               ),
+              onTap: () {
+                Navigator.pushNamed(
+                  context,
+                  '/updateTask',
+                  arguments: task,
+                );
+              },
             ),
           );
         },
