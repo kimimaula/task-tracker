@@ -5,6 +5,7 @@ import 'tasks_list.dart';
 import 'complete_list.dart';
 import 'addtask.dart';
 import 'update_task.dart';
+import 'completed_task.dart';
 
 class TaskList with ChangeNotifier {
   final List<Map<String, dynamic>> _tasks = [];
@@ -80,6 +81,11 @@ class MyApp extends StatelessWidget {
               break;
             case '/updateTask':
               builder = (BuildContext _) => UpdateTask(
+                    key: UniqueKey(),
+                  );
+              break;
+            case '/completedTask':
+              builder = (BuildContext _) => CompletedTask(
                     key: UniqueKey(),
                   );
               break;

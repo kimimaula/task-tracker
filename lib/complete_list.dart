@@ -39,7 +39,7 @@ class _CompletePgState extends State<CompletePg> {
                     onTap: () {
                       Navigator.pushNamed(
                         context,
-                        '/updateTask',
+                        '/completedTask',
                         arguments: task,
                       );
                     },
