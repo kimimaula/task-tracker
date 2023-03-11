@@ -26,6 +26,13 @@ class TaskList with ChangeNotifier {
     notifyListeners();
   }
 
+  void deleteTask(String taskId) {
+    Map<String, dynamic> task =
+        _tasks.firstWhere((task) => task['taskId'] == taskId);
+    _tasks.remove(task);
+    notifyListeners();
+  }
+
   void completeTask(String taskId, DateTime completedDate) {
     Map<String, dynamic> task =
         _tasks.firstWhere((task) => task['taskId'] == taskId);
