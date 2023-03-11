@@ -105,7 +105,7 @@ class _IntroPageState extends State<IntroPage> {
               ),
             ],
           ),
-          const SizedBox(height: 15),
+          const SizedBox(height: 40),
           Row(
             children: const [
               Expanded(
@@ -136,7 +136,51 @@ class _IntroPageState extends State<IntroPage> {
                     }
                   },
                   child: const Text(
-                      'https://github.com/kimimaula/task-tracker.git'),
+                    'https://github.com/kimimaula/task-tracker.git',
+                    style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        color: Colors.blue),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 15),
+          Row(
+            children: const [
+              Expanded(
+                child: Text(
+                  'You can find find out more about me at:',
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                      color: Colors.cyan),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 4,
+                ),
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Expanded(
+                child: InkWell(
+                  onTap: () async {
+                    final url = Uri.parse(
+                        'https://www.linkedin.com/in/hakimi-maula-9b7418113/');
+                    if (await canLaunchUrl(url)) {
+                      await launchUrl(url);
+                    } else {
+                      throw 'Could not launch $url';
+                    }
+                  },
+                  child: const Text(
+                    'https://www.linkedin.com/in/hakimi-maula-9b7418113/',
+                    style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        color: Colors.blue),
+                  ),
                 ),
               ),
             ],
