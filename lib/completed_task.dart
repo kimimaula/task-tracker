@@ -45,7 +45,7 @@ class _CompletedTaskState extends State<CompletedTask> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add Tasks'),
+        title: const Text('Comleted Task'),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 35.0, vertical: 60.0),

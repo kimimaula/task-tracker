@@ -39,7 +39,7 @@ class _UpdateTaskState extends State<UpdateTask> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add Tasks'),
+        title: const Text('Update Tasks'),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 35.0, vertical: 60.0),
