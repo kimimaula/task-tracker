@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'intro.dart';
 import 'tasks.dart';
 import 'complete.dart';
+import 'addtask.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +19,25 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.cyan,
       ),
-      home: const MyHomePage(title: 'Kimmi Demo Task List'),
+      home: Navigator(
+        onGenerateRoute: (RouteSettings settings) {
+          WidgetBuilder builder;
+          switch (settings.name) {
+            case '/':
+              builder = (BuildContext _) =>
+                  const MyHomePage(title: 'Kimmi Demo Task List');
+              break;
+            case '/addtask':
+              builder = (BuildContext _) => AddTask(
+                    key: UniqueKey(),
+                  );
+              break;
+            default:
+              throw Exception('Invalid route: ${settings.name}');
+          }
+          return MaterialPageRoute(builder: builder, settings: settings);
+        },
+      ),
     );
   }
 }
