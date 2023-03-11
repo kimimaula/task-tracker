@@ -8,7 +8,7 @@
     </intent>
 </queries>
    <application
-        android:label="shopper"
+        android:label="Task Clear"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
